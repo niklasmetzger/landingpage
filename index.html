@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Haushaltsbuch – Deine Finanzen. Privat. Auf einen Blick.</title>
+  <meta name="description" content="Haushaltsbuch ist eine selbst-gehostete Desktop-App für deine Finanzen: CSV-Import, automatische Kategorisierung, Dashboard und tiefe Analysen – komplett offline und privat." />
+  <meta name="theme-color" content="#0b0f1a" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Animierter Hintergrund -->
+  <div class="bg-aurora" aria-hidden="true">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="grid-overlay"></div>
+  </div>
+
+  <!-- Navigation -->
+  <header class="nav" id="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#top">
+        <span class="brand-mark">€</span>
+        <span class="brand-name">Haushaltsbuch</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#features">Funktionen</a>
+        <a href="#analyse">Analyse</a>
+        <a href="#privacy">Privatsphäre</a>
+        <a href="#download">Download</a>
+      </nav>
+      <a href="#download" class="btn btn-ghost nav-cta">Herunterladen</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main id="top">
+    <section class="hero container">
+      <div class="hero-badge">
+        <span class="dot"></span> 100&nbsp;% offline &amp; selbst-gehostet · Version 0.1.0
+      </div>
+      <h1 class="hero-title">
+        Deine Finanzen.<br />
+        <span class="gradient-text">Privat. Auf einen Blick.</span>
+      </h1>
+      <p class="hero-sub">
+        Vom Bank-CSV zum klaren Dashboard in Sekunden. Haushaltsbuch importiert deine
+        Umsätze, kategorisiert sie automatisch und zeigt dir mit interaktiven Diagrammen,
+        wohin dein Geld wirklich fließt – alles lokal auf deinem Rechner.
+      </p>
+
+      <!-- Download-Bereich mit OS-Erkennung -->
+      <div class="hero-cta" id="download-hero">
+        <a href="#" class="btn btn-primary btn-lg" id="primary-download">
+          <span class="os-icon" id="primary-os-icon"></span>
+          <span class="btn-label">
+            <span class="btn-main" id="primary-download-label">Herunterladen</span>
+            <span class="btn-sub" id="primary-download-sub">Wird erkannt …</span>
+          </span>
+        </a>
+        <button class="btn btn-secondary btn-lg" id="toggle-os" type="button">
+          Anderes System
+        </button>
+      </div>
+      <p class="hero-detect" id="detect-note">System wird erkannt …</p>
+
+      <!-- App-Mockup -->
+      <div class="hero-shot">
+        <div class="window">
+          <div class="window-bar">
+            <span class="wb-dot red"></span>
+            <span class="wb-dot yellow"></span>
+            <span class="wb-dot green"></span>
+            <span class="window-title">Haushaltsbuch — Dashboard</span>
+          </div>
+          <div class="window-body">
+            <aside class="app-side">
+              <div class="side-item active">📊 Dashboard</div>
+              <div class="side-item">📁 Buchungen</div>
+              <div class="side-item">📈 Analyse</div>
+              <div class="side-item">🏦 Konten</div>
+              <div class="side-item">⚙️ Einstellungen</div>
+            </aside>
+            <div class="app-main">
+              <div class="kpi-row">
+                <div class="kpi">
+                  <span class="kpi-label">Saldo</span>
+                  <span class="kpi-value pos">12.480,55 €</span>
+                </div>
+                <div class="kpi">
+                  <span class="kpi-label">Einnahmen</span>
+                  <span class="kpi-value pos">3.250,00 €</span>
+                </div>
+                <div class="kpi">
+                  <span class="kpi-label">Ausgaben</span>
+                  <span class="kpi-value neg">1.874,32 €</span>
+                </div>
+                <div class="kpi">
+                  <span class="kpi-label">Cashflow</span>
+                  <span class="kpi-value pos">+1.375,68 €</span>
+                </div>
+              </div>
+              <div class="chart-row">
+                <div class="chart-card">
+                  <span class="chart-title">Ausgaben nach Kategorie</span>
+                  <div class="bars">
+                    <span style="--h: 80%"></span>
+                    <span style="--h: 62%"></span>
+                    <span style="--h: 48%"></span>
+                    <span style="--h: 70%"></span>
+                    <span style="--h: 35%"></span>
+                    <span style="--h: 55%"></span>
+                    <span style="--h: 25%"></span>
+                  </div>
+                </div>
+                <div class="chart-card">
+                  <span class="chart-title">Verteilung</span>
+                  <div class="donut"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="trust-row">
+        <span>🔒 Keine Cloud</span>
+        <span>🗄️ Lokale SQLite-Datenbank</span>
+        <span>📥 CSV-Import</span>
+        <span>🤖 Auto-Kategorisierung</span>
+        <span>🖥️ macOS &amp; Windows</span>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="section container" id="features">
+      <div class="section-head">
+        <span class="eyebrow">Funktionen</span>
+        <h2>Alles, was du für den Überblick brauchst</h2>
+        <p>Von der ersten CSV bis zur tiefen Auswertung – Haushaltsbuch deckt den
+          kompletten Weg ab, ohne dass deine Daten je deinen Rechner verlassen.</p>
+      </div>
+
+      <div class="feature-grid">
+        <article class="feature-card">
+          <div class="fc-icon">📥</div>
+          <h3>CSV-Import aus dem Online-Banking</h3>
+          <p>Exportiere deine Umsätze aus dem Banking und lade sie hoch. Doppelte Buchungen
+            werden über einen Import-Hash automatisch erkannt und übersprungen.</p>
+        </article>
+        <article class="feature-card">
+          <div class="fc-icon">🤖</div>
+          <h3>Automatische Kategorisierung</h3>
+          <p>Hinterlege Schlüsselwörter – steht z.&nbsp;B. „REWE“ in der Beschreibung, landet
+            die Buchung automatisch in „Supermarkt“. Regeln greifen direkt beim Import.</p>
+        </article>
+        <article class="feature-card">
+          <div class="fc-icon">📊</div>
+          <h3>Übersichtliches Dashboard</h3>
+          <p>Saldo, Einnahmen, Ausgaben und Cashflow auf einen Blick – ergänzt um
+            Balken- und Tortendiagramme sowie eine durchsuchbare Buchungstabelle.</p>
+        </article>
+        <article class="feature-card">
+          <div class="fc-icon">✍️</div>
+          <h3>Manuelle Buchungen</h3>
+          <p>Barzahlungen, Spenden oder alles, was nicht über die Bank läuft, erfasst du
+            manuell. Sie werden geschützt und beim nächsten Import nicht überschrieben.</p>
+        </article>
+        <article class="feature-card">
+          <div class="fc-icon">🏦</div>
+          <h3>Konten- &amp; Kategorienverwaltung</h3>
+          <p>Verwalte Giro-, Spar- und weitere Konten mit IBAN und Beschreibung. Lege eigene
+            Kategorien und Unterkategorien samt Icons und Stichwörtern an.</p>
+        </article>
+        <article class="feature-card">
+          <div class="fc-icon">📄</div>
+          <h3>Paperless-ngx Integration</h3>
+          <p>Optional: Verknüpfe Belege automatisch mit deiner Paperless-ngx-Instanz und
+            archiviere Dokumente zu deinen Buchungen.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Analyse Showcase -->
+    <section class="section container" id="analyse">
+      <div class="split">
+        <div class="split-text">
+          <span class="eyebrow">Analyse</span>
+          <h2>Verstehe, wohin dein Geld fließt</h2>
+          <p>Die Analyse-Seite geht weit über das Dashboard hinaus. Filtere flexibel nach
+            Zeitraum, Konto, Kategorie oder Suchbegriff und vergleiche Zeiträume miteinander.</p>
+          <ul class="check-list">
+            <li>Top-Kategorien nach Ausgaben</li>
+            <li>Prozentualer Anteil je Kategorie</li>
+            <li>Vergleichsansichten über Monate &amp; Jahre</li>
+            <li>Voller Filtersatz: Jahr, Monat, Konto, Kategorie, Suche</li>
+            <li>Export gefilterter Buchungen als CSV</li>
+          </ul>
+        </div>
+        <div class="split-visual">
+          <div class="analysis-card">
+            <div class="ac-head">
+              <span>Top-Kategorien</span>
+              <span class="ac-pill">Jahr 2026</span>
+            </div>
+            <div class="ac-row"><span>🛒 Lebensmittel</span><span class="ac-bar"><i style="--w:88%"></i></span><b>624 €</b></div>
+            <div class="ac-row"><span>🏠 Wohnen</span><span class="ac-bar"><i style="--w:74%"></i></span><b>520 €</b></div>
+            <div class="ac-row"><span>⛽ Mobilität</span><span class="ac-bar"><i style="--w:55%"></i></span><b>388 €</b></div>
+            <div class="ac-row"><span>🎬 Freizeit</span><span class="ac-bar"><i style="--w:40%"></i></span><b>280 €</b></div>
+            <div class="ac-row"><span>📱 Abos</span><span class="ac-bar"><i style="--w:28%"></i></span><b>196 €</b></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Privacy -->
+    <section class="section container" id="privacy">
+      <div class="privacy-band">
+        <div class="pb-content">
+          <span class="eyebrow light">Privatsphäre by Design</span>
+          <h2>Deine Daten bleiben bei dir – Punkt.</h2>
+          <p>Haushaltsbuch läuft als native Desktop-App. Alle Buchungen liegen in einer
+            lokalen SQLite-Datenbank auf deinem Gerät. Keine Konten, kein Tracking,
+            keine Cloud, kein Abo.</p>
+          <div class="pb-stats">
+            <div><b>0</b><span>Daten in der Cloud</span></div>
+            <div><b>1</b><span>lokale Datenbank-Datei</span></div>
+            <div><b>∞</b><span>Buchungen &amp; Konten</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Download -->
+    <section class="section container" id="download">
+      <div class="section-head">
+        <span class="eyebrow">Download</span>
+        <h2>Jetzt herunterladen</h2>
+        <p>Wähle dein Betriebssystem. Wir haben es bereits für dich vorausgewählt.</p>
+      </div>
+
+      <div class="download-grid">
+        <div class="dl-card" data-os="mac" id="dl-mac">
+          <div class="dl-os-icon mac"></div>
+          <h3>macOS</h3>
+          <p class="dl-meta">Apple Silicon &amp; Intel · .dmg</p>
+          <a class="btn btn-primary btn-block" href="assets/downloads/Haushaltsbuch_0.1.0_macos.dmg" download>
+            DMG herunterladen
+          </a>
+          <span class="dl-note">macOS 11 oder neuer</span>
+        </div>
+
+        <div class="dl-card" data-os="windows" id="dl-windows">
+          <div class="dl-os-icon win"></div>
+          <h3>Windows</h3>
+          <p class="dl-meta">64-bit · .msi Installer</p>
+          <a class="btn btn-primary btn-block" href="assets/downloads/Haushaltsbuch_0.1.0_x64.msi" download>
+            Installer herunterladen
+          </a>
+          <span class="dl-note">Windows 10 / 11</span>
+        </div>
+      </div>
+      <p class="dl-foot">Version 0.1.0 · Kostenlos · Selbst-gehostet</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="brand">
+        <span class="brand-mark">€</span>
+        <span class="brand-name">Haushaltsbuch</span>
+      </div>
+      <p class="footer-copy">CSV zu Dashboard – selbst-gehostete Finanzverwaltung.<br />
+        Entwickelt von Niklas Metzger.</p>
+      <p class="footer-fine">© <span id="year"></span> Haushaltsbuch · Alle Daten bleiben lokal.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
