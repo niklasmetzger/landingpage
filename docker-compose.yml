@@ -4,4 +4,7 @@ services:
     container_name: landingpage
     ports:
       - "8080:80"
+    volumes:
+      # Download-Dateien (DMG/MSI) live einblenden – kein Rebuild nötig
+      - ./assets/downloads:/usr/share/nginx/html/assets/downloads
     restart: unless-stopped
