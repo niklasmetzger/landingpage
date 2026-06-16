@@ -1,17 +1,22 @@
 // ===== Konfiguration der Downloads =====
+// >>> Nur hier die Version ändern – alles andere passt sich automatisch an. <<<
 const VERSION = '0.1.0';
+
+// Dateiendung für Windows: 'msi' (WiX) oder 'exe' (NSIS) – je nachdem, was du baust.
+const WIN_EXT = 'msi';
+
 const DOWNLOADS = {
   mac: {
     label: 'Für macOS herunterladen',
     sub: `DMG · Version ${VERSION}`,
-    file: 'assets/downloads/Haushaltsbuch_0.1.0_macos.dmg',
+    file: `assets/downloads/Haushaltsbuch_${VERSION}_macos.dmg`,
     iconClass: 'mac',
     name: 'macOS',
   },
   windows: {
     label: 'Für Windows herunterladen',
-    sub: `MSI Installer · Version ${VERSION}`,
-    file: 'assets/downloads/Haushaltsbuch_0.1.0_x64.msi',
+    sub: `${WIN_EXT.toUpperCase()} Installer · Version ${VERSION}`,
+    file: `assets/downloads/Haushaltsbuch_${VERSION}_x64.${WIN_EXT}`,
     iconClass: 'win',
     name: 'Windows',
   },
@@ -65,6 +70,25 @@ function applyOS(os) {
     card.classList.toggle('recommended', card.dataset.os === os);
   });
 }
+
+// ===== Download-Karten & Versions-Texte aus der Konfiguration füllen =====
+function initVersionTexts() {
+  // Karten-Links auf die korrekten Dateien setzen
+  document.querySelectorAll('.dl-card').forEach((card) => {
+    const d = DOWNLOADS[card.dataset.os];
+    if (!d) return;
+    const link = card.querySelector('a');
+    if (link) {
+      link.href = d.file;
+      link.setAttribute('download', '');
+    }
+  });
+  // Alle Elemente mit data-version bekommen die Versionsnummer
+  document.querySelectorAll('[data-version]').forEach((el) => {
+    el.textContent = VERSION;
+  });
+}
+initVersionTexts();
 
 function toggleOS() {
   autoDetected = false;
