@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hilfe & Anleitungen – Haushaltsbuch</title>
+  <meta name="description" content="Hilfe zum Haushaltsbuch: Bank-CSV exportieren (Sparkasse, ING, DKB & Co.), Import, automatische Kategorisierung, Budget, Analyse und alle Einstellungen – durchsuchbar erklärt." />
+  <meta name="theme-color" content="#0b0f1a" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="128x128" href="assets/favicon-128.png" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg-aurora" aria-hidden="true">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="grid-overlay"></div>
+  </div>
+
+  <!-- Navigation -->
+  <header class="nav" id="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html">
+        <img class="brand-mark" src="assets/favicon-128.png" alt="Haushaltsbuch-Logo" width="34" height="34" />
+        <span class="brand-name">Haushaltsbuch</span>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html#features">Funktionen</a>
+        <a href="hilfe.html">Hilfe</a>
+        <a href="index.html#analyse">Analyse</a>
+        <a href="index.html#privacy">Privatsphäre</a>
+        <a href="index.html#download">Download</a>
+      </nav>
+      <a href="index.html#download" class="btn btn-ghost nav-cta">Herunterladen</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="help-hero container">
+      <span class="eyebrow">Hilfe &amp; Anleitungen</span>
+      <h1>Wie kann ich dir helfen?</h1>
+      <p>Bank-CSV exportieren, importieren, kategorisieren, auswerten – hier ist alles erklärt.
+        Tipp: Nutze die Suche, um direkt zum Thema zu springen.</p>
+      <input type="search" class="help-search" id="helpSearch"
+             placeholder="Hilfe durchsuchen … (z. B. „Sparkasse“, „Budget“, „Import“)"
+             autocomplete="off" aria-label="Hilfe durchsuchen" />
+      <div class="help-topics" id="helpTopics">
+        <a class="help-chip" href="#bank-export">Bank-CSV exportieren</a>
+        <a class="help-chip" href="#upload">Import</a>
+        <a class="help-chip" href="#settings-zuordnungen">Auto-Kategorisieren</a>
+        <a class="help-chip" href="#dashboard">Dashboard</a>
+        <a class="help-chip" href="#analyse">Analyse</a>
+        <a class="help-chip" href="#budget">Budget</a>
+        <a class="help-chip" href="#datenschutz">Datenschutz</a>
+      </div>
+    </section>
+
+    <section class="container help-wrap">
+      <p class="help-no-results" id="helpNoResults" hidden>Keine Treffer für „<span id="hnrQ"></span>“. Versuch ein anderes Stichwort.</p>
+
+      <!-- ══ BANK-CSV-EXPORT ══ -->
+      <article class="help-article" id="bank-export">
+        <h2>CSV aus dem Online-Banking holen</h2>
+        <p>Der Ablauf ist bei fast allen Banken gleich: am Computer einloggen → Umsätze öffnen →
+          Zeitraum wählen → exportieren → CSV. Haushaltsbuch erkennt Kodierung und Trennzeichen
+          automatisch und merkt sich die Spaltenzuordnung – das Format muss also nicht perfekt sein.</p>
+        <p class="help-tip">💡 Den CSV-Export gibt es fast immer nur im <b>Online-Banking am Computer</b>,
+          nicht in der Banking-App – dort bekommst du meist nur ein PDF.</p>
+
+        <div class="bank-list">
+          <details class="bank">
+            <summary>Sparkasse</summary>
+            <div class="bank-body">
+              <ol>
+                <li>Am Computer im Online-Banking anmelden.</li>
+                <li>Konto öffnen und zu <b>Umsätze</b> wechseln.</li>
+                <li>Oben rechts auf <b>Filtern</b> den gewünschten Zeitraum einstellen.</li>
+                <li><b>Export</b> bzw. „Exportieren &amp; Drucken“ wählen → Format <b>CSV-CAMT</b> (oder CSV).</li>
+              </ol>
+              <p class="bank-note">Semikolon-getrennt, oft ISO-8859-1. Der Export ist je nach Sparkasse auf
+                ~90–360 Tage begrenzt. Die genaue Menüführung unterscheidet sich je nach Sparkasse – eine
+                bebilderte Anleitung findest du auf der Website deiner Sparkasse.</p>
+            </div>
+          </details>
+
+          <details class="bank">
+            <summary>Volksbank / Raiffeisenbank</summary>
+            <div class="bank-body">
+              <ol>
+                <li>VR&nbsp;OnlineBanking am Computer mit VR-NetKey + PIN anmelden.</li>
+                <li><b>Banking &amp; Verträge</b> → Konto → <b>Umsätze</b>.</li>
+                <li>Über den Umsätzen das <b>Export</b>-Menü öffnen.</li>
+                <li>Format <b>CSV</b> und Zeitraum wählen → <b>Exportieren</b> (für &gt;90 Tage ggf. TAN).</li>
+              </ol>
+              <p class="bank-note">Zeitraum bis ca. 2 Jahre. Menüführung variiert je nach Volksbank/Raiffeisenbank –
+                eine bebilderte Anleitung findest du auf der Website deiner Bank.</p>
+            </div>
+          </details>
+
+          <details class="bank">
+            <summary>ING</summary>
+            <div class="bank-body">
+              <ol>
+                <li>Internetbanking am Computer anmelden (in der App geht kein CSV).</li>
+                <li>Girokonto → <b>Umsätze</b>.</li>
+                <li>Oben rechts <b>Filtern</b> → Zeitraum wählen.</li>
+                <li>Unten links <b>Exportieren</b> → <b>CSV</b> → „Jetzt exportieren“.</li>
+              </ol>
+              <p class="bank-note">Tipp: Für lange Zeiträume sind die PDF-Kontoauszüge im Postfach oft vollständiger.</p>
+              <a class="bank-help" href="https://www.ing.de/hilfe/banking/" target="_blank" rel="noopener">→ ING-Hilfe (Banking) ↗</a>
+            </div>
+          </details>
+
+          <details class="bank">
+            <summary>DKB</summary>
+            <div class="bank-body">
+              <ol>
+                <li>Web-Banking unter <b>banking.dkb.de</b> anmelden (nicht über die App).</li>
+                <li>Konto öffnen → <b>Umsätze</b>.</li>
+                <li>Gewünschten Zeitraum auswählen.</li>
+                <li>Oben rechts unter <b>Export</b> auf <b>CSV</b> klicken.</li>
+              </ol>
+              <p class="bank-note">Semikolon-getrennt. Beim Import in Excel ggf. den Dateiursprung von
+                Macintosh auf Windows umstellen.</p>
+            </div>
+          </details>
+
+          <details class="bank">
+            <summary>Commerzbank</summary>
+            <div class="bank-body">
+              <ol>
+                <li>Online Banking am Computer anmelden → Konto wählen.</li>
+                <li>Den <b>Datumsfilter</b> auf den gewünschten Zeitraum stellen (sonst nur wenige Tage).</li>
+                <li>Rechts über den Umsätzen auf <b>PDF / CSV</b> → <b>Umsätze exportieren</b>.</li>
+                <li><b>CSV</b> wählen → <b>Exportieren</b>.</li>
+              </ol>
+              <p class="bank-note">Bis 12 Monate rückwirkend. Jedes Konto separat exportieren.</p>
+              <a class="bank-help" href="https://www.commerzbank.de/service/wie-kann-ich-meine-umsaetze-exportieren/" target="_blank" rel="noopener">→ Commerzbank: Umsätze exportieren ↗</a>
+            </div>
+          </details>
+
+          <details class="bank">
+            <summary>Deutsche Bank</summary>
+            <div class="bank-body">
+              <ol>
+                <li>Online-Banking „Meine Bank“ am Computer anmelden.</li>
+                <li>Konto auswählen → <b>Umsätze</b>.</li>
+                <li>Zeitraum einstellen (max. 12 Monate).</li>
+                <li><b>Exportieren</b> → Format <b>CSV</b>.</li>
+              </ol>
+              <p class="bank-note">Soll- und Haben-Beträge stehen teils in getrennten Spalten – die
+                Spaltenzuordnung in Haushaltsbuch erledigt das beim Import.</p>
+              <a class="bank-help" href="https://www.deutsche-bank.de/pk/service-und-kontakt/services/fragen-antworten/konto-und-debitkarten/wo-sehe-ich-meine-umsaetze.html" target="_blank" rel="noopener">→ Deutsche Bank: Umsätze (FAQ) ↗</a>
+            </div>
+          </details>
+
+          <details class="bank">
+            <summary>Postbank</summary>
+            <div class="bank-body">
+              <ol>
+                <li>Online-Banking am Computer anmelden → Konto wählen.</li>
+                <li>Links neben der Suche auf <b>Filtern</b> → „Von/Bis“-Zeitraum → <b>Anwenden</b>.</li>
+                <li>Die angezeigten Umsätze als <b>CSV</b> herunterladen (auch XML/PDF möglich).</li>
+              </ol>
+              <p class="bank-note">Nur die letzten ~100 Tage; UTF-8, Semikolon-getrennt. Konten, die zur
+                Deutschen Bank migriert wurden, exportierst du über das Deutsche-Bank-Banking.</p>
+              <a class="bank-help" href="https://www.postbank.de/privatkunden/services/online-banking/anleitungen/umsaetze-filtern.html" target="_blank" rel="noopener">→ Postbank: Umsätze-Anleitung ↗</a>
+            </div>
+          </details>
+
+          <details class="bank">
+            <summary>comdirect</summary>
+            <div class="bank-body">
+              <ol>
+                <li>Online-Banking am Computer anmelden.</li>
+                <li><b>Konto &amp; Karte</b> → <b>Umsätze</b>.</li>
+                <li>Zeitraum wählen (bis 2 Jahre).</li>
+                <li>Ganz unten auf der Seite <b>Export als CSV</b>.</li>
+              </ol>
+              <p class="bank-note">Empfänger/Verwendungszweck landen teils in einer Spalte – Haushaltsbuch
+                ordnet die Spalten beim Import zu.</p>
+              <a class="bank-help" href="https://www.comdirect.de/faq/umsaetze" target="_blank" rel="noopener">→ comdirect: Umsätze (FAQ) ↗</a>
+            </div>
+          </details>
+
+          <details class="bank">
+            <summary>N26</summary>
+            <div class="bank-body">
+              <ol>
+                <li>Im Browser unter <b>app.n26.com</b> anmelden (die App kann nur PDF!).</li>
+                <li>Konto bzw. Space im Home-Tab auswählen.</li>
+                <li>Zu <b>Downloads</b> bzw. „Kontoaktivität“ wechseln.</li>
+                <li>Zeitraum wählen, Format <b>CSV</b> → <b>Herunterladen</b>.</li>
+              </ol>
+              <p class="bank-note">Komma-getrennt, UTF-8. Für freie Zeiträume den „Kontoaktivitätsbericht“ nutzen.</p>
+              <a class="bank-help" href="https://support.n26.com/de-de/konto-und-personliche-informationen/kontoauszuge-und-kontobestatigungen/kontoauszug-herunterladen" target="_blank" rel="noopener">→ N26: Kontoauszug herunterladen ↗</a>
+            </div>
+          </details>
+
+          <details class="bank">
+            <summary>Consorsbank</summary>
+            <div class="bank-body">
+              <ol>
+                <li>Online-Banking unter <b>consorsbank.de</b> am Computer anmelden.</li>
+                <li><b>Kontoumsätze</b> öffnen.</li>
+                <li>Zeitraum wählen (Standard 90 Tage; mit aktivem „Finanzplaner“ bis 24 Monate).</li>
+                <li>Unter der Umsatzliste auf <b>CSV exportieren</b> (auch Excel möglich).</li>
+              </ol>
+              <p class="bank-note">Tipp: Den „Finanzplaner“ früh aktivieren – die längere Historie steht
+                erst ab Aktivierung zur Verfügung.</p>
+            </div>
+          </details>
+        </div>
+
+        <p class="bank-disclaimer">Bezeichnungen können je nach Banking-Version leicht abweichen – such
+          notfalls nach „Umsätze exportieren“ oder „CSV“. Egal welches Trennzeichen oder welche Kodierung:
+          Haushaltsbuch erkennt das beim Import automatisch.</p>
+      </article>
+
+      <!-- ══ UPLOAD / IMPORT ══ -->
+      <article class="help-article" id="upload">
+        <h2>Upload &amp; Import</h2>
+        <p>Importiere Kontoumsätze als CSV- oder Excel-Datei direkt aus deinem Online-Banking.</p>
+        <h3>Schritt 1 – Datei wählen</h3>
+        <ul>
+          <li>Unterstützte Formate: <code>.csv</code>, <code>.xlsx</code>, <code>.xls</code>.</li>
+          <li>Ziehe die Datei in den Upload-Bereich oder klicke auf <b>Datei auswählen</b>.</li>
+          <li>Das System erkennt automatisch die Kodierung (UTF-8, ISO-8859-1) und das Trennzeichen.</li>
+        </ul>
+        <h3>Schritt 2 – Spalten-Mapping</h3>
+        <p>Weise den Spalten deiner Datei die richtigen Felder zu:</p>
+        <ul>
+          <li><b>Datum</b> – Buchungsdatum (verschiedene Formate werden erkannt).</li>
+          <li><b>Beschreibung</b> – Verwendungszweck / Buchungstext.</li>
+          <li><b>Betrag</b> – Eine Spalte (negativ = Ausgabe) oder zwei getrennte Spalten (Soll / Haben).</li>
+          <li><b>IBAN / Gegenkonto</b> – Optional, für spätere Filterung nach Gegenstelle.</li>
+          <li><b>Kommentar</b> – Zusatzfeld für weitere Buchungsinfos.</li>
+        </ul>
+        <p>Das Mapping wird gespeichert und beim nächsten Upload derselben Bank automatisch wiederhergestellt.</p>
+        <h3>Schritt 3 – Import &amp; Duplikaterkennung</h3>
+        <ul>
+          <li>Bereits importierte Buchungen werden erkannt und übersprungen (Duplikat-Hash).</li>
+          <li><b>Update-Modus</b> – zeigt pro Buchung eine Diff-Vorschau (alt → neu); du kannst einzelne Felder selektiv überschreiben.</li>
+          <li>Nach dem Import startet optional der automatische Kategorie-Abgleich.</li>
+        </ul>
+        <p class="help-tip">💡 Das gespeicherte Spalten-Mapping kannst du auch als JSON-Datei exportieren und auf einem anderen Gerät importieren.</p>
+      </article>
+
+      <!-- ══ ZUORDNUNGEN / AUTO-KATEGORISIEREN ══ -->
+      <article class="help-article" id="settings-zuordnungen">
+        <h2>Automatisch kategorisieren (Zuordnungen)</h2>
+        <p>Keyword-Regeln legen fest, welche Kategorie eine Buchung automatisch bekommt. Das System prüft
+          Beschreibung und Kommentar jeder Buchung gegen alle Regeln.</p>
+        <h3>Neue Zuordnung anlegen</h3>
+        <ol>
+          <li>Tippe ein <b>Schlüsselwort</b> in das Eingabefeld und drücke <span class="kbd">Enter</span>.</li>
+          <li>Wähle <b>Hauptkategorie</b> und optional eine <b>Unterkategorie</b>.</li>
+          <li>Klicke <b>Speichern</b>.</li>
+        </ol>
+        <h3>UND / ODER-Logik</h3>
+        <p>Jede Regel unterstützt eine flexible Kombination:</p>
+        <ul>
+          <li><b>UND</b> (mehrere Wörter in einem Block): <span class="help-badge">amex</span> + <span class="help-badge">lastschrift</span> – trifft nur, wenn <em>beide</em> Wörter im Buchungstext vorkommen.</li>
+          <li><b>ODER</b> (mehrere Blöcke): <span class="help-badge">amex</span> ODER <span class="help-badge">american express</span> – trifft, wenn <em>mindestens ein</em> Block zutrifft.</li>
+        </ul>
+        <h3>Excel Import / Export</h3>
+        <ul>
+          <li><b>Export</b> – lädt alle Keyword-Zuordnungen als <code>.xlsx</code> (Spalten: ID, Schlüsselwort, Hauptkategorie, Unterkategorie).</li>
+          <li><b>Import</b> – lade eine bearbeitete Excel-Datei hoch; das System zeigt eine Vorschau (Neu / Geändert / Unverändert).</li>
+        </ul>
+        <p>Format im Export: <code>REWE</code>, <code>AMEX + Lastschrift</code>, <code>(AMEX) ODER (American Express)</code>.</p>
+        <p class="help-tip warning"><b>Hinweis:</b> Der Import überschreibt bestehende Regeln mit gleichem Schlüsselwort (nicht-destruktiv). Zum Löschen nutze das Löschen-Icon in der Tabelle.</p>
+      </article>
+
+      <!-- ══ DATENSCHUTZ ══ -->
+      <article class="help-article" id="datenschutz">
+        <h2>Datenschutz &amp; „läuft lokal“</h2>
+        <p>Diese App ist bewusst <b>komplett lokal</b> gebaut. Deine Finanzdaten verlassen deinen Rechner nie.</p>
+        <ul>
+          <li><b>Kein Konto, keine Cloud, keine Telemetrie.</b> Kein Server-Login, keine Nutzungsstatistik, kein „nach Hause telefonieren“.</li>
+          <li><b>Daten bleiben in einer Datei auf deinem Rechner:</b> <code>~/Library/Application Support/Haushaltsbuch</code> (SQLite). Selbst sicher-, kopier- und löschbar.</li>
+          <li><b>Der eingebaute Server ist nur über <code>127.0.0.1</code> erreichbar</b> – nicht aus deinem WLAN oder dem Internet.</li>
+          <li><b>Funktioniert komplett offline.</b> Alle Oberflächen-Bausteine sind in der App enthalten – es werden keine externen Server kontaktiert.</li>
+          <li><b>Von Apple signiert &amp; notarisiert.</b></li>
+          <li><b>Einzige Ausnahme – nur wenn du es aktivierst:</b> Die optionale Paperless-Anbindung sendet Belege an <em>deinen eigenen</em> Server.</li>
+        </ul>
+        <p class="help-tip"><b>Selbst prüfen:</b> Schalte dein WLAN aus – die App läuft weiter. Oder beobachte sie mit einem Netzwerk-Monitor (LuLu / Little Snitch): es gehen keine Verbindungen nach außen.</p>
+      </article>
+
+      <!-- ══ DASHBOARD ══ -->
+      <article class="help-article" id="dashboard">
+        <h2>Dashboard</h2>
+        <p>Die Startseite zeigt auf einen Blick, wie es um deine Finanzen steht.</p>
+        <h3>Übersichtskarten</h3>
+        <ul>
+          <li><b>Einnahmen / Ausgaben / Saldo</b> – Summen für den gewählten Zeitraum (Monat oder Jahr).</li>
+          <li><b>Kontostand</b> – akkumulierter Saldo aller Buchungen bis heute.</li>
+          <li>Das Monats-/Jahres-Dropdown oben rechts wechselt den Betrachtungszeitraum.</li>
+        </ul>
+        <h3>Diagramme</h3>
+        <ul>
+          <li><b>Ausgaben nach Kategorie</b> – Balken/Ring; Klick öffnet die gefilterte Buchungsliste.</li>
+          <li><b>Monatsverlauf</b> – Einnahmen und Ausgaben der letzten 12 Monate.</li>
+          <li><b>Budget-Übersicht</b> – Fortschritt grün (im Budget), gelb (nahe Limit), rot (überschritten).</li>
+        </ul>
+        <p class="help-tip">💡 Das Dashboard aktualisiert sich automatisch beim Ändern des Zeitraum-Filters – kein Neuladen nötig.</p>
+      </article>
+
+      <!-- ══ ANALYSE ══ -->
+      <article class="help-article" id="analyse">
+        <h2>Erweiterte Analyse</h2>
+        <p>Detaillierte Aufschlüsselung deiner Einnahmen und Ausgaben (Menü <b>Auswertung → Erweiterte Analyse</b>).</p>
+        <h3>Filter</h3>
+        <ul>
+          <li><b>Jahr / Monat</b> – Mehrfachauswahl möglich (z.&nbsp;B. Jan–Mär 2026).</li>
+          <li><b>Konto</b> – nach einem Bankkonto filtern.</li>
+          <li><b>Kategorie ausblenden</b> – einzelne Kategorien aus der Auswertung herausnehmen (z.&nbsp;B. interne Überträge).</li>
+        </ul>
+        <h3>Kategorie-Tabelle</h3>
+        <ul>
+          <li>Ausgaben/Einnahmen je Haupt- und Unterkategorie; Klick klappt die Unterkategorien auf (Drill-down).</li>
+          <li>Spalte <b>Ø / Monat</b> zeigt den monatlichen Durchschnitt über den Zeitraum.</li>
+          <li>Unkategorisierte Buchungen werden gesondert aufgeführt – Klick führt zur gefilterten Liste.</li>
+        </ul>
+      </article>
+
+      <!-- ══ DIAGRAMME ══ -->
+      <article class="help-article" id="diagramme">
+        <h2>Diagramme</h2>
+        <p>Visualisierungen für Trends, Kategorieverteilung und Monatsentwicklung (Menü <b>Auswertung → Diagramme</b>).</p>
+        <ul>
+          <li><b>Liniendiagramm</b> – Einnahmen/Ausgaben im Zeitverlauf, ideal für Trends.</li>
+          <li><b>Balkendiagramm</b> – monatlicher Vergleich, auch nach Kategorien aufgeteilt.</li>
+          <li><b>Ring-/Kuchendiagramm</b> – Anteil jeder Kategorie an den Gesamtausgaben.</li>
+          <li><b>Heatmap</b> – Ausgaben nach Wochentag und Uhrzeit (falls Zeitstempel vorhanden).</li>
+        </ul>
+        <p class="help-tip">💡 Klick auf einen Datenpunkt im Linien-/Balkendiagramm öffnet die Buchungsliste für diesen Monat und diese Kategorie.</p>
+      </article>
+
+      <!-- ══ BERICHTE ══ -->
+      <article class="help-article" id="berichte">
+        <h2>Berichte</h2>
+        <p>Kompakte Jahres-Zusammenfassungen (Menü <b>Auswertung → Berichte</b>).</p>
+        <ul>
+          <li><b>Jahresübersicht</b> – Monatsverlauf von Einnahmen, Ausgaben und Cashflow für das gewählte Jahr.</li>
+          <li><b>Kategorie-Jahresanalyse</b> – eine Kategorie wählen und ihre 12 Monatswerte als Balken sehen, inkl. <b>Summe</b>, <b>Durchschnitt</b> und <b>höchstem Monat</b>.</li>
+        </ul>
+      </article>
+
+      <!-- ══ BUDGET ══ -->
+      <article class="help-article" id="budget">
+        <h2>Budget</h2>
+        <p>Lege fest, wie viel du ausgeben möchtest, und verfolge den Verbrauch (Menü <b>Planung → Budget</b>).</p>
+        <h3>Drei Ebenen</h3>
+        <ul>
+          <li><b>Gesamtbudget</b> – Summe aller Kategoriebudgets <em>plus</em> ein frei wählbarer Extra-Betrag (Puffer).</li>
+          <li><b>Hauptkategorie</b> – Budget pro Kategorie (z.&nbsp;B. „Essen &amp; Trinken“).</li>
+          <li><b>Unterkategorie</b> – noch feineres Budget, sichtbar beim Ausklappen einer Kategorie.</li>
+        </ul>
+        <h3>Fest oder pro Monat</h3>
+        <ul>
+          <li><b>Für alle Monate</b> – ein fester Wert, der in jedem Monat gilt.</li>
+          <li><b>Nur dieser Monat</b> – ein abweichender Wert nur für den gewählten Monat.</li>
+        </ul>
+        <p>Die <b>Fortschrittsbalken</b> färben sich grün (&lt;&nbsp;80&nbsp;%), gelb (&lt;&nbsp;100&nbsp;%) und rot (über Budget). Ein leeres Feld bzw. 0 entfernt das Budget wieder.</p>
+      </article>
+
+      <!-- ══ KALENDER ══ -->
+      <article class="help-article" id="kalender">
+        <h2>Kalender</h2>
+        <p>Deine Buchungen als Monatsgitter (Mo–So) (Menü <b>Planung → Kalender</b>).</p>
+        <ul>
+          <li>Jede Tageszelle zeigt <b>Einnahmen</b> (grün) und <b>Ausgaben</b> (rot) dieses Tages.</li>
+          <li>Oben siehst du die <b>Monatssummen</b>; mit den Pfeilen wechselst du den Monat.</li>
+          <li><b>Klick auf einen Tag</b> öffnet die Buchungen dieses Tages.</li>
+        </ul>
+      </article>
+
+      <!-- ══ ERFASSEN ══ -->
+      <article class="help-article" id="erfassen">
+        <h2>Erfassen (manuelle Buchung)</h2>
+        <p>Manuelle Eingabe einzelner Buchungen – z.&nbsp;B. Barzahlungen, die nicht im Bankexport auftauchen.</p>
+        <ul>
+          <li><b>Datum</b> – Buchungsdatum (Pflichtfeld), steht automatisch auf heute.</li>
+          <li><b>Beschreibung</b> – Freitext, wird fürs Keyword-Matching genutzt.</li>
+          <li><b>Betrag</b> – positiv = Einnahme, negativ = Ausgabe.</li>
+          <li><b>Kategorie / Unterkategorie</b> – direkt zuweisen.</li>
+          <li><b>Konto</b> und optional ein <b>Kommentar</b>.</li>
+        </ul>
+        <p class="help-tip">💡 Manuell erfasste Buchungen werden beim automatischen Abgleich (<em>Alle mappen</em>) nicht überschrieben.</p>
+      </article>
+
+      <!-- ══ BUCHUNGEN ══ -->
+      <article class="help-article" id="buchungen">
+        <h2>Buchungen</h2>
+        <p>Die zentrale Arbeitsfläche mit allen importierten und manuell erfassten Transaktionen.</p>
+        <h3>Filtern &amp; Suchen</h3>
+        <ul>
+          <li><b>Suchfeld</b> – Freitextsuche in Beschreibung und Kommentar.</li>
+          <li><b>Zeitraum</b>, <b>Kategorie-Dropdown</b>, <b>Konto-Filter</b> und <b>Ohne Kategorie</b> (nur Unzugeordnete).</li>
+        </ul>
+        <h3>Tabellen-Aktionen</h3>
+        <ul>
+          <li><b>Zeile anklicken</b> – markieren (Mehrfachauswahl mit <span class="kbd">Shift</span> + Klick).</li>
+          <li><b>Kategorie-Dropdown in der Zeile</b> – Kategorie inline ändern.</li>
+          <li><b>Stift-Icon</b> – Details bearbeiten; <b>Löschen-Icon</b> – Buchung entfernen.</li>
+        </ul>
+        <h3>Kategorie zuweisen (Bulk) &amp; Schnellanlage</h3>
+        <ul>
+          <li><b>Kategorie-Dropdown in der Toolbar</b> – alle markierten Buchungen auf einmal zuweisen.</li>
+          <li><b>„+ Kategorie“</b> – Schnellanlage: Schlüsselwörter werden aus der Beschreibung vorgeschlagen; wähle Modus <span class="help-badge">Haupt + Unter</span>, <span class="help-badge">Nur Haupt</span> oder <span class="help-badge">Nur Unter</span>.</li>
+          <li><b>„Alle mappen“</b> – öffnet eine Vorschau aller unkategorisierten Buchungen, die zu deinen Keyword-Regeln passen; einzelne Zeilen abwählbar.</li>
+        </ul>
+        <p class="help-tip">💡 Wählst du eine bestehende Kategorie aus dem Dropdown, werden nur die Keywords als neue Regel gespeichert – die Kategorie selbst bleibt unverändert.</p>
+      </article>
+
+      <!-- ══ GESCHÄFTLICH ══ -->
+      <article class="help-article" id="geschaeftlich">
+        <h2>Geschäftlich</h2>
+        <p>Separate Ansicht für geschäftliche Ausgaben – nützlich, wenn du Privat- und Firmenfinanzen in einem Konto vermischst.</p>
+        <ul>
+          <li>Buchungen als <b>geschäftlich</b> markieren (Toggle in der Buchungszeile).</li>
+          <li>Diese Seite zeigt nur die als geschäftlich markierten Buchungen.</li>
+          <li>Kategorisierung, Suche und Export funktionieren wie auf der Buchungsseite.</li>
+          <li>Praktisch für Steuererklärung oder Kostenerstattung.</li>
+        </ul>
+      </article>
+
+      <!-- ══ KATEGORIEN ══ -->
+      <article class="help-article" id="settings-kategorien">
+        <h2>Kategorien &amp; Unterkategorien</h2>
+        <p>Verwaltung der Haupt- und Unterkategorien (z.&nbsp;B. <em>Essen &amp; Trinken → Lebensmittel</em>).</p>
+        <ul>
+          <li><b>Neue Kategorie</b> – Name eingeben und speichern; optional ein <b>Emoji-Icon</b> (erscheint in Charts und Liste).</li>
+          <li><b>Umbenennen</b> ändert den Namen überall, auch in bestehenden Buchungen.</li>
+          <li><b>Löschen</b> nur möglich, wenn keine Buchungen/Unterkategorien zugeordnet sind.</li>
+          <li>Jede Unterkategorie gehört genau einer Hauptkategorie und erscheint in der Analyse im Drill-down.</li>
+        </ul>
+      </article>
+
+      <!-- ══ KONTEN ══ -->
+      <article class="help-article" id="settings-konten">
+        <h2>Konten</h2>
+        <p>Definiere deine Bankkonten, damit Buchungen klar zugeordnet werden.</p>
+        <ul>
+          <li><b>Name</b> – frei wählbar (z.&nbsp;B. „DKB Girokonto“).</li>
+          <li><b>IBAN</b> – optional; wird beim CSV-Import zur automatischen Konto-Erkennung genutzt.</li>
+          <li><b>Beschreibung</b> – kurze Notiz zum Kontozweck.</li>
+        </ul>
+        <p class="help-tip">💡 Gibst du beim Upload das Konto an, kannst du später nach Konten filtern und bekommst getrennte Kontostände im Dashboard.</p>
+      </article>
+
+      <!-- ══ PAPERLESS ══ -->
+      <article class="help-article" id="settings-paperless">
+        <h2>Paperless</h2>
+        <p>Optionale Integration mit <a href="https://docs.paperless-ngx.com" target="_blank" rel="noopener">Paperless-ngx</a> – einem selbst gehosteten Dokumenten-Management-System.</p>
+        <ul>
+          <li><b>Aktivieren</b> – Checkbox setzen.</li>
+          <li><b>IP / URL</b> – Adresse deiner Paperless-Instanz (z.&nbsp;B. <code>http://192.168.1.100:8000</code>).</li>
+          <li><b>API-Token</b> – in Paperless unter <em>Einstellungen → API-Token</em>.</li>
+          <li><b>Dokumenttyp-ID</b> – welcher Paperless-Typ für Belege genutzt wird.</li>
+        </ul>
+        <p>Wenn aktiviert, erscheint in der Buchungszeile ein Beleg-Icon, das das zugehörige Dokument öffnet.</p>
+      </article>
+
+      <!-- ══ DATENEXPORT ══ -->
+      <article class="help-article" id="settings-export">
+        <h2>Datenexport</h2>
+        <p>Exportiere alle Buchungen als Excel-Datei zur Weiterbearbeitung oder Archivierung.</p>
+        <ul>
+          <li><b>Alle Buchungen exportieren</b> – inklusive Kategorie, Unterkategorie, Konto und Kommentar.</li>
+          <li><b>Keyword-Zuordnungen exportieren</b> – die Regeln (auch im Tab Zuordnungen verfügbar).</li>
+          <li>Der Export ist direkt in Excel / LibreOffice Calc verwendbar.</li>
+        </ul>
+      </article>
+
+      <!-- ══ FREIGABEN ══ -->
+      <article class="help-article" id="settings-freigaben">
+        <h2>Freigaben &amp; Datenbereiche</h2>
+        <p>Jeder Benutzer hat seinen eigenen Datenbestand. Über Freigaben kannst du anderen Zugriff geben.</p>
+        <ul>
+          <li><b>Freigaben</b> – einem anderen Benutzer Lese- oder Schreibzugriff geben, oder sehen, wer dir Zugriff gewährt hat.</li>
+          <li><b>Datenbereich wechseln</b> – oben rechts im Benutzer-Menü zwischen deinem und freigegebenen Bereichen umschalten (bei Nur-Lesen sind Bearbeiten-Aktionen deaktiviert).</li>
+          <li><b>Administration</b> (nur Admins) – Referenzdaten-Modus, Benutzerverwaltung, Zuordnung von Alt-Daten.</li>
+        </ul>
+        <p class="help-tip">💡 Damit ihr euch gegenseitig seht, muss jede:r dem anderen unter <em>Einstellungen → Freigaben</em> Zugriff erteilen.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="brand">
+        <img class="brand-mark" src="assets/favicon-128.png" alt="Haushaltsbuch-Logo" width="34" height="34" />
+        <span class="brand-name">Haushaltsbuch</span>
+      </div>
+      <p class="footer-copy">CSV zu Dashboard – lokale Finanzverwaltung auf deinem PC.<br />
+        Entwickelt von Niklas Metzger.</p>
+      <p class="footer-fine">© <span id="year"></span> Haushaltsbuch · Alle Daten bleiben lokal.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Jahr im Footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Nav-Schatten beim Scrollen
+    const nav = document.getElementById('nav');
+    const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 12);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    // ===== Hilfe-Suche =====
+    const search = document.getElementById('helpSearch');
+    const noResults = document.getElementById('helpNoResults');
+    const hnrQ = document.getElementById('hnrQ');
+    const articles = [...document.querySelectorAll('.help-article')];
+    const norm = (s) => (s || '').toLowerCase();
+
+    function applySearch() {
+      const q = norm(search.value.trim());
+      let visibleCount = 0;
+
+      articles.forEach((art) => {
+        const banks = [...art.querySelectorAll('details.bank')];
+        if (!q) {
+          art.hidden = false;
+          banks.forEach((b) => { b.hidden = false; b.open = false; });
+          visibleCount++;
+          return;
+        }
+        let articleHasMatch = false;
+        if (banks.length) {
+          // Banking-Artikel: jede Bank einzeln filtern
+          const introMatch = norm(art.querySelector('h2').textContent + ' ' + (art.querySelector('p') ? art.querySelector('p').textContent : '')).includes(q);
+          banks.forEach((b) => {
+            const m = norm(b.textContent).includes(q);
+            b.hidden = !(m || introMatch);
+            b.open = m;
+            if (m) articleHasMatch = true;
+          });
+          if (introMatch) articleHasMatch = true;
+        } else {
+          articleHasMatch = norm(art.textContent).includes(q);
+        }
+        art.hidden = !articleHasMatch;
+        if (articleHasMatch) visibleCount++;
+      });
+
+      if (q && visibleCount === 0) {
+        hnrQ.textContent = search.value.trim();
+        noResults.hidden = false;
+      } else {
+        noResults.hidden = true;
+      }
+    }
+
+    search.addEventListener('input', applySearch);
+
+    // Topic-Chips & Treffer: sanft scrollen, Suche bei Bedarf leeren
+    document.querySelectorAll('.help-chip').forEach((chip) => {
+      chip.addEventListener('click', (e) => {
+        const id = chip.getAttribute('href').slice(1);
+        const target = document.getElementById(id);
+        if (target && target.hidden) { search.value = ''; applySearch(); }
+      });
+    });
+
+    // Falls die Seite mit #anker geöffnet wird, dorthin springen
+    if (location.hash) {
+      const t = document.getElementById(location.hash.slice(1));
+      if (t) setTimeout(() => t.scrollIntoView(), 50);
+    }
+  </script>
+</body>
+</html>

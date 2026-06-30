@@ -32,9 +32,9 @@
       </a>
       <nav class="nav-links">
         <a href="#features">Funktionen</a>
-        <a href="#bank-export">Bank-Export</a>
         <a href="#analyse">Analyse</a>
         <a href="#privacy">Privatsphäre</a>
+        <a href="hilfe.html">Hilfe</a>
         <a href="#download">Download</a>
       </nav>
       <a href="#download" class="btn btn-ghost nav-cta">Herunterladen</a>
@@ -189,167 +189,16 @@
       </div>
     </section>
 
-    <!-- Bank-CSV-Export -->
-    <section class="section container" id="bank-export">
-      <div class="section-head">
-        <span class="eyebrow">Erste Schritte</span>
-        <h2>So holst du deine CSV aus dem Online-Banking</h2>
-        <p>Der Ablauf ist bei fast allen Banken gleich: am Computer einloggen → Umsätze öffnen →
-          Zeitraum wählen → exportieren → CSV. Haushaltsbuch erkennt Kodierung und Trennzeichen
-          automatisch und merkt sich die Spaltenzuordnung – das Format muss also nicht perfekt sein.</p>
+    <!-- Verweis auf die Hilfe-Seite (Bank-CSV) -->
+    <section class="section container" id="hilfe-teaser">
+      <div class="help-cta-band">
+        <div class="hcb-text">
+          <h3>Wie komme ich an meine Bank-CSV?</h3>
+          <p>Schritt-für-Schritt-Anleitungen für Sparkasse, ING, DKB, Commerzbank, N26 &amp; Co. –
+            plus alle Funktionen erklärt und durchsuchbar auf der Hilfe-Seite.</p>
+        </div>
+        <a href="hilfe.html#bank-export" class="btn btn-primary">Zu den Anleitungen</a>
       </div>
-
-      <p class="bank-tip">💡 Den CSV-Export gibt es fast immer nur im <b>Online-Banking am Computer</b>,
-        nicht in der Banking-App – dort bekommst du meist nur ein PDF.</p>
-
-      <div class="bank-list">
-        <details class="bank">
-          <summary>Sparkasse</summary>
-          <div class="bank-body">
-            <ol>
-              <li>Am Computer im Online-Banking anmelden.</li>
-              <li>Konto öffnen und zu <b>Umsätze</b> wechseln.</li>
-              <li>Oben rechts auf <b>Filtern</b> den gewünschten Zeitraum einstellen.</li>
-              <li><b>Export</b> bzw. „Exportieren &amp; Drucken" wählen → Format <b>CSV-CAMT</b> (oder CSV).</li>
-            </ol>
-            <p class="bank-note">Semikolon-getrennt, oft ISO-8859-1. Der Export ist je nach Sparkasse auf
-              ~90–360 Tage begrenzt. Die genaue Menüführung unterscheidet sich je nach Sparkasse – eine
-              bebilderte Anleitung findest du auf der Website deiner Sparkasse.</p>
-          </div>
-        </details>
-
-        <details class="bank">
-          <summary>Volksbank / Raiffeisenbank</summary>
-          <div class="bank-body">
-            <ol>
-              <li>VR&nbsp;OnlineBanking am Computer mit VR-NetKey + PIN anmelden.</li>
-              <li><b>Banking &amp; Verträge</b> → Konto → <b>Umsätze</b>.</li>
-              <li>Über den Umsätzen das <b>Export</b>-Menü öffnen.</li>
-              <li>Format <b>CSV</b> und Zeitraum wählen → <b>Exportieren</b> (für &gt;90 Tage ggf. TAN).</li>
-            </ol>
-            <p class="bank-note">Zeitraum bis ca. 2 Jahre. Menüführung variiert je nach Volksbank/Raiffeisenbank –
-              eine bebilderte Anleitung findest du auf der Website deiner Bank.</p>
-          </div>
-        </details>
-
-        <details class="bank">
-          <summary>ING</summary>
-          <div class="bank-body">
-            <ol>
-              <li>Internetbanking am Computer anmelden (in der App geht kein CSV).</li>
-              <li>Girokonto → <b>Umsätze</b>.</li>
-              <li>Oben rechts <b>Filtern</b> → Zeitraum wählen.</li>
-              <li>Unten links <b>Exportieren</b> → <b>CSV</b> → „Jetzt exportieren".</li>
-            </ol>
-            <p class="bank-note">Tipp: Für lange Zeiträume sind die PDF-Kontoauszüge im Postfach oft vollständiger.</p>
-            <a class="bank-help" href="https://www.ing.de/hilfe/banking/" target="_blank" rel="noopener">→ ING-Hilfe (Banking) ↗</a>
-          </div>
-        </details>
-
-        <details class="bank">
-          <summary>DKB</summary>
-          <div class="bank-body">
-            <ol>
-              <li>Web-Banking unter <b>banking.dkb.de</b> anmelden (nicht über die App).</li>
-              <li>Konto öffnen → <b>Umsätze</b>.</li>
-              <li>Gewünschten Zeitraum auswählen.</li>
-              <li>Oben rechts unter <b>Export</b> auf <b>CSV</b> klicken.</li>
-            </ol>
-            <p class="bank-note">Semikolon-getrennt. Beim Import in Excel ggf. den Dateiursprung von
-              Macintosh auf Windows umstellen.</p>
-          </div>
-        </details>
-
-        <details class="bank">
-          <summary>Commerzbank</summary>
-          <div class="bank-body">
-            <ol>
-              <li>Online Banking am Computer anmelden → Konto wählen.</li>
-              <li>Den <b>Datumsfilter</b> auf den gewünschten Zeitraum stellen (sonst nur wenige Tage).</li>
-              <li>Rechts über den Umsätzen auf <b>PDF / CSV</b> → <b>Umsätze exportieren</b>.</li>
-              <li><b>CSV</b> wählen → <b>Exportieren</b>.</li>
-            </ol>
-            <p class="bank-note">Bis 12 Monate rückwirkend. Jedes Konto separat exportieren.</p>
-            <a class="bank-help" href="https://www.commerzbank.de/service/wie-kann-ich-meine-umsaetze-exportieren/" target="_blank" rel="noopener">→ Commerzbank: Umsätze exportieren ↗</a>
-          </div>
-        </details>
-
-        <details class="bank">
-          <summary>Deutsche Bank</summary>
-          <div class="bank-body">
-            <ol>
-              <li>Online-Banking „Meine Bank" am Computer anmelden.</li>
-              <li>Konto auswählen → <b>Umsätze</b>.</li>
-              <li>Zeitraum einstellen (max. 12 Monate).</li>
-              <li><b>Exportieren</b> → Format <b>CSV</b>.</li>
-            </ol>
-            <p class="bank-note">Soll- und Haben-Beträge stehen teils in getrennten Spalten – die
-              Spaltenzuordnung in Haushaltsbuch erledigt das beim Import.</p>
-            <a class="bank-help" href="https://www.deutsche-bank.de/pk/service-und-kontakt/services/fragen-antworten/konto-und-debitkarten/wo-sehe-ich-meine-umsaetze.html" target="_blank" rel="noopener">→ Deutsche Bank: Umsätze (FAQ) ↗</a>
-          </div>
-        </details>
-
-        <details class="bank">
-          <summary>Postbank</summary>
-          <div class="bank-body">
-            <ol>
-              <li>Online-Banking am Computer anmelden → Konto wählen.</li>
-              <li>Links neben der Suche auf <b>Filtern</b> → „Von/Bis"-Zeitraum → <b>Anwenden</b>.</li>
-              <li>Die angezeigten Umsätze als <b>CSV</b> herunterladen (auch XML/PDF möglich).</li>
-            </ol>
-            <p class="bank-note">Nur die letzten ~100 Tage; UTF-8, Semikolon-getrennt. Konten, die zur
-              Deutschen Bank migriert wurden, exportierst du über das Deutsche-Bank-Banking.</p>
-            <a class="bank-help" href="https://www.postbank.de/privatkunden/services/online-banking/anleitungen/umsaetze-filtern.html" target="_blank" rel="noopener">→ Postbank: Umsätze-Anleitung ↗</a>
-          </div>
-        </details>
-
-        <details class="bank">
-          <summary>comdirect</summary>
-          <div class="bank-body">
-            <ol>
-              <li>Online-Banking am Computer anmelden.</li>
-              <li><b>Konto &amp; Karte</b> → <b>Umsätze</b>.</li>
-              <li>Zeitraum wählen (bis 2 Jahre).</li>
-              <li>Ganz unten auf der Seite <b>Export als CSV</b>.</li>
-            </ol>
-            <p class="bank-note">Empfänger/Verwendungszweck landen teils in einer Spalte – Haushaltsbuch
-              ordnet die Spalten beim Import zu.</p>
-            <a class="bank-help" href="https://www.comdirect.de/faq/umsaetze" target="_blank" rel="noopener">→ comdirect: Umsätze (FAQ) ↗</a>
-          </div>
-        </details>
-
-        <details class="bank">
-          <summary>N26</summary>
-          <div class="bank-body">
-            <ol>
-              <li>Im Browser unter <b>app.n26.com</b> anmelden (die App kann nur PDF!).</li>
-              <li>Konto bzw. Space im Home-Tab auswählen.</li>
-              <li>Zu <b>Downloads</b> bzw. „Kontoaktivität" wechseln.</li>
-              <li>Zeitraum wählen, Format <b>CSV</b> → <b>Herunterladen</b>.</li>
-            </ol>
-            <p class="bank-note">Komma-getrennt, UTF-8. Für freie Zeiträume den „Kontoaktivitätsbericht" nutzen.</p>
-            <a class="bank-help" href="https://support.n26.com/de-de/konto-und-personliche-informationen/kontoauszuge-und-kontobestatigungen/kontoauszug-herunterladen" target="_blank" rel="noopener">→ N26: Kontoauszug herunterladen ↗</a>
-          </div>
-        </details>
-
-        <details class="bank">
-          <summary>Consorsbank</summary>
-          <div class="bank-body">
-            <ol>
-              <li>Online-Banking unter <b>consorsbank.de</b> am Computer anmelden.</li>
-              <li><b>Kontoumsätze</b> öffnen.</li>
-              <li>Zeitraum wählen (Standard 90 Tage; mit aktivem „Finanzplaner" bis 24 Monate).</li>
-              <li>Unter der Umsatzliste auf <b>CSV exportieren</b> (auch Excel möglich).</li>
-            </ol>
-            <p class="bank-note">Tipp: Den „Finanzplaner" früh aktivieren – die längere Historie steht
-              erst ab Aktivierung zur Verfügung.</p>
-          </div>
-        </details>
-      </div>
-
-      <p class="bank-disclaimer">Bezeichnungen können je nach Banking-Version leicht abweichen – such
-        notfalls nach „Umsätze exportieren" oder „CSV". Egal welches Trennzeichen oder welche Kodierung:
-        Haushaltsbuch erkennt das beim Import automatisch.</p>
     </section>
 
     <!-- Analyse Showcase -->
