@@ -14,7 +14,7 @@ const DOWNLOADS = {
 // Liest das Downloads-Verzeichnis und erkennt Mac-/Windows-Datei anhand der Endung.
 async function discoverDownloads() {
   try {
-    const res = await fetch('assets/downloads/', { headers: { Accept: 'application/json' } });
+    const res = await fetch('assets/downloads/', { headers: { Accept: 'application/json' }, cache: 'no-store' });
     if (!res.ok) throw new Error('listing ' + res.status);
     const files = (await res.json()).filter((i) => i.type === 'file').map((i) => i.name);
     const dmg = files.find((n) => /\.dmg$/i.test(n));
